@@ -24,7 +24,7 @@ jQuery(document).ready(function($) {
 	} );
     
     // Post meta tabs
-    $( '.tab-selector a' ).click( function() {
+    $( '.tab-selector a' ).on( 'click', function() {
 		$( '.tab-selector a' ).removeClass( 'active' );
 		$( this ).addClass( 'active' );
     	$( '.post-meta-tabs .tab' ).removeClass( 'active' );
@@ -54,7 +54,7 @@ jQuery(document).ready(function($) {
 
 	resizeVideo(vidSelector);
 
-	$(window).resize(function() {
+	$(window).on( 'resize', function() {
 		resizeVideo(vidSelector);
 	});
 	

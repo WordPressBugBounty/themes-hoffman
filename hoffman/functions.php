@@ -35,7 +35,8 @@ if ( ! function_exists( 'hoffman_setup' ) ) :
 		add_theme_support( 'infinite-scroll', array(
 			'container' => 'posts',
 			'footer' 	=> 'wrapper',
-			'type' 		=> 'click'
+			'type' 		=> 'click',
+			'render' 	=> 'hoffman_infinite_scroll_render',
 		) );
 		
 		// Add support for title-tag
@@ -70,6 +71,42 @@ require get_template_directory() . '/inc/classes/class-hoffman-customize.php';
 
 
 /* ---------------------------------------------------------------------------------------------
+   JETPACK INFINITE SCROLL
+   --------------------------------------------------------------------------------------------- */
+
+if ( ! function_exists( 'hoffman_infinite_scroll_render' ) ) :
+	function hoffman_infinite_scroll_render() {
+
+		while ( have_posts() ) {
+			the_post();
+			get_template_part( 'content', get_post_format() );
+		}
+
+		// Jetpack calls wp_head() right after the render callback, inside the same output buffer, which adds
+		// the contents of <head> to the loaded posts. Buffer and discard that output. The wp_head actions still
+		// run, so Jetpack can still pick up any scripts and styles enqueued by the new posts.
+		add_action( 'wp_head', 'hoffman_infinite_scroll_head_buffer_start', -99999 );
+		add_action( 'wp_head', 'hoffman_infinite_scroll_head_buffer_end', PHP_INT_MAX );
+
+	}
+endif;
+
+if ( ! function_exists( 'hoffman_infinite_scroll_head_buffer_start' ) ) :
+	function hoffman_infinite_scroll_head_buffer_start() {
+		ob_start();
+	}
+endif;
+
+if ( ! function_exists( 'hoffman_infinite_scroll_head_buffer_end' ) ) :
+	function hoffman_infinite_scroll_head_buffer_end() {
+		ob_end_clean();
+		remove_action( 'wp_head', 'hoffman_infinite_scroll_head_buffer_start', -99999 );
+		remove_action( 'wp_head', 'hoffman_infinite_scroll_head_buffer_end', PHP_INT_MAX );
+	}
+endif;
+
+
+/* ---------------------------------------------------------------------------------------------
    ENQUEUE SCRIPTS
    --------------------------------------------------------------------------------------------- */
 
@@ -78,7 +115,7 @@ if ( ! function_exists( 'hoffman_load_javascript_files' ) ) :
 
 		$theme_version = wp_get_theme( 'hoffman' )->get( 'Version' );
 
-		wp_register_script( 'hoffman_flexslider', get_template_directory_uri() . '/assets/js/flexslider.min.js', array(), '2.7.0' );
+		wp_register_script( 'hoffman_flexslider', get_template_directory_uri() . '/assets/js/flexslider.js', array( 'jquery' ), $theme_version );
 		
 		wp_enqueue_script( 'hoffman_global', get_template_directory_uri() . '/assets/js/global.js', array( 'jquery', 'hoffman_flexslider' ), $theme_version, true  );
 
@@ -628,11 +665,16 @@ endif;
 if ( ! function_exists( 'hoffman_block_editor_styles' ) ) :
 	function hoffman_block_editor_styles() {
 
+		// Only load in the editor. Hooked to enqueue_block_assets so the styles reach the iframed editor canvas.
+		if ( ! is_admin() ) {
+			return;
+		}
+
 		$theme_version = wp_get_theme( 'hoffman' )->get( 'Version' );
 
 		wp_register_style( 'hoffman-block-editor-styles-font', get_theme_file_uri( '/assets/css/fonts.css' ) );
 		wp_enqueue_style( 'hoffman-block-editor-styles', get_theme_file_uri( '/assets/css/hoffman-block-editor-styles.css' ), array( 'hoffman-block-editor-styles-font' ), $theme_version, 'all' );
 
 	}
-	add_action( 'enqueue_block_editor_assets', 'hoffman_block_editor_styles', 1 );
+	add_action( 'enqueue_block_assets', 'hoffman_block_editor_styles', 1 );
 endif;

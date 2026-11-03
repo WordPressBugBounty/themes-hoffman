@@ -2,11 +2,19 @@
 Contributors: Anlino
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=anders%40andersnoren%2ese&lc=US&item_name=Free%20WordPress%20Themes%20from%20Anders%20Noren&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Requires at least: 4.5
-Tested up to: 6.0
+Tested up to: 7.1
 Requires PHP: 5.4
 Stable tag: trunk
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+A beautifully minimal, responsive and retina-ready theme for bloggers.
+
+
+== Description ==
+
+Hoffman is a beautifully minimal, responsive and retina-ready theme for bloggers. It features a social icon menu, Jetpack support for infinite scroll, Block Editor support, two custom widgets, a full-width template, an archive template, editor styles, custom accent color support, custom background support, support for the gallery post format, and much more. Demo: https://hoffman.andersnoren.se
+
 
 == Installation ==
 
@@ -15,9 +23,16 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 All theme specific options are handled through the WordPress Customizer.
 
+
 == Frequently Asked Questions ==
 
-== Use the gallery post format
+= Where can I get support? =
+Post your question in the Hoffman support forum on WordPress.org: https://wordpress.org/support/theme/hoffman/
+
+= Where can I request a feature or report a bug? =
+Open an issue in the Hoffman GitHub repository: https://github.com/andersnoren/hoffman
+
+= How do I use the gallery post format? =
 
 1. Go to Admin > Posts > Add New.
 2. Select the "Gallery" post format in the Post Attributes box.
@@ -25,7 +40,7 @@ All theme specific options are handled through the WordPress Customizer.
 4. Close the Media window and publish/update the post.
 5. The images you uploaded should now be displayed in the post gallery.
 
-== Use the social menu in the header and footer
+= How do I use the social menu in the header and footer? =
 
 1. Go to Admin > Appearance > Menus.
 2. Create a new menu.
@@ -36,12 +51,19 @@ All theme specific options are handled through the WordPress Customizer.
 
 For a list of all social icons supported, visit http://genericons.com/.
 
-== Add social icons to the author profile
+= How do I add social icons to the author profile? =
 
 1. Go to Admin > Users > Your Profile.
 2. Scroll down to "Contact Info". Below that headline, you will find fields for each social network supported.
 3. To add a social network to your author profile, add the URL to your page on that social network in the corresponding field.
 4. When you are done, scroll down to the bottom and click "Update Profile".
+
+
+== Copyright ==
+
+Hoffman WordPress Theme, Copyright 2014-2026 Anders Norén
+Hoffman is distributed under the terms of the GNU GPL.
+
 
 == Licenses ==
 
@@ -57,19 +79,28 @@ Genericons
 License: GNU GPL 2.0
 Source: http://genericons.com
 
-screenshot.png post images
+screenshot.jpg post images
 License: CC0 Public Domain 
-Source: http://www.unsplash.com
-
-Backstretch.js
-License: MIT License 
-Source: https://raw.githubusercontent.com/srobbin/jquery-backstretch/
+Source: Unsplash (added before the 2017 change to the Unsplash license, when its photos were released under CC0)
 
 FlexSlider jQuery slider 
 License: GNU GPL 2.0 
 Source: http://flexslider.woothemes.com
 
+
 == Changelog ==
+
+Version 2.1.3 (2026-11-03)
+-------------------------
+- Tested with WordPress 7.1.
+- Fixed Jetpack Infinite Scroll adding the contents of the page <head> to the page when loading more posts.
+- Switched to the variable version of Raleway, which replaces four font files with one smaller one.
+- Replaced deprecated jQuery methods (.resize(), .click(), .bind(), .unbind(), .delegate(), .hover(), .blur() and .focus()) with .on() and .off().
+- Switched from flexslider.min.js to the updated flexslider.js, and removed flexslider.min.js.
+- Fixed the block editor styles not loading in the iframed editor.
+- Updated the demo URL.
+- Added the Requires at least header to style.css.
+- Added Description, Copyright and Upgrade Notice sections to the readme, fixed the FAQ formatting, removed the unused Backstretch.js license, and updated the image source notes.
 
 Version 2.1.2 (2022-07-01)
 -------------------------
@@ -334,3 +365,9 @@ Version 1.01 (2014-07-18)
 
 Version 1.0 (2014-07-17)
 ------------------------- 
+
+
+== Upgrade Notice ==
+
+= 2.1.3 =
+Tested with WordPress 7.1. Fixes Jetpack Infinite Scroll and the block editor styles in the iframed editor.
