@@ -4,6 +4,7 @@ jQuery(document).ready(function($) {
 	// Toggle blog-menu
 	$(".nav-toggle").on("click", function(){	
 		$(this).toggleClass("active");
+		$(this).attr("aria-expanded", $(this).hasClass("active") ? "true" : "false");
 		$(".navigation").slideToggle();
 		return false;
 	});

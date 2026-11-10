@@ -90,6 +90,13 @@ Source: http://flexslider.woothemes.com
 
 == Changelog ==
 
+Version 2.1.4 (2026-11-09)
+-------------------------
+- Added an aria-expanded attribute to the menu toggle, so screen readers announce whether the menu is open, and replaced the block elements inside it with valid button content.
+- Converted the Genericons icon font from WOFF to WOFF2, which is smaller and supported by all browsers that WordPress supports.
+- Removed vendor prefixes that are no longer needed, and replaced the rest with their standard equivalents where available.
+- Fixed the placeholder text color not being applied in Firefox.
+
 Version 2.1.3 (2026-11-03)
 -------------------------
 - Tested with WordPress 7.1.
@@ -368,6 +375,9 @@ Version 1.0 (2014-07-17)
 
 
 == Upgrade Notice ==
+
+= 2.1.4 =
+Improves the accessibility of the menu toggle, switches the icon font to the smaller WOFF2 format, removes outdated CSS, and fixes the placeholder color in Firefox.
 
 = 2.1.3 =
 Tested with WordPress 7.1. Fixes Jetpack Infinite Scroll and the block editor styles in the iframed editor.

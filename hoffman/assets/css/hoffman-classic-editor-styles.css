@@ -297,10 +297,6 @@ body#tinymce.wp-editor textarea {
 	background: #FAFAFA;
 	border: 2px solid #ddd;
 	
-	-webkit-transition: border 0.1s ease-in-out;
-	-moz-transition: border 0.1s ease-in-out;
-	-ms-transition: border 0.1s ease-in-out;
-	-o-transition: border 0.1s ease-in-out;
 	transition: border 0.1s ease-in-out;
 }
 
@@ -328,7 +324,7 @@ body#tinymce.wp-editor input[type="button"] {
 	color: #fff;
 	font-size: 0.9rem;
 	line-height: 1;
-	-webkit-appearance: none;
+	appearance: none;
 	border-radius: 3px;
 }
 

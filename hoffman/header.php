@@ -23,16 +23,16 @@
 	
 			<header class="header group">
 
-				<button class="nav-toggle show-desktop">
-					<div class="bars">
-						<div class="bar"></div>
-						<div class="bar"></div>
-						<div class="bar"></div>
-					</div>
-					<p>
+				<button type="button" class="nav-toggle show-desktop" aria-expanded="false">
+					<span class="bars" aria-hidden="true">
+						<span class="bar"></span>
+						<span class="bar"></span>
+						<span class="bar"></span>
+					</span>
+					<span class="label">
 						<span class="menu"><?php _e( 'Menu', 'hoffman' ); ?></span>
 						<span class="close"><?php _e( 'Close', 'hoffman' ); ?></span>
-					</p>
+					</span>
 				</button>
 
 				<div class="header-titles">
